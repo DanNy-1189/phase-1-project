@@ -1,0 +1,60 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "name": "Contra",
+      "image": "",
+      "release": "1987 - Nintendo Entertainment System",
+      "genre": "Action",
+      "mode": "Single-player, Multi-player",
+    },
+    {
+      "id": 2,
+      "name": "Batman",
+      "image": "",
+      "release": "1989 - Nintendo Entertainment System",
+      "genre": "Action",
+      "mode": "Single-player"
+    },
+    {
+      "id": 3,
+      "name": "Ninja Gaiden",
+      "image": "",
+      "release": "1988 - Nintendo Entertainment System",
+      "genre": "Action",
+      "mode": "Single-player"
+    },
+    {
+      "id": 4,
+      "name": "Banjo-Kazooie",
+      "image": "",
+      "release": "1998 - Nintendo 64",
+      "genre": "Adventure",
+      "mode": "Single-player"
+    },
+    {
+      "id": 5,
+      "name": "Donkey Kong 64",
+      "image": "",
+      "release": "1999 - Nintendo 64",
+      "genre": "Adventure",
+      "mode": "Single-player, Multi-player"
+    },
+    {
+      "id": 6,
+      "name": "Frogger the Great Quest",
+      "image": "",
+      "release": "2001 - PlayStation 2",
+      "genre": "Adventure",
+      "mode": "Single-player"
+    },
+    {
+      "id": 7,
+      "name": "Crash Bandicoot: The Wrath of Cortex",
+      "image": "",
+      "release": "2001 - PlayStation 2",
+      "genre": "Adventure",
+      "mode": "Single-player"
+    }
+  ]
+}
