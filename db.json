@@ -3,15 +3,17 @@
     {
       "id": 1,
       "name": "Contra",
-      "image": "",
+      "image": "./images/img-1.gif",
+      "price": 20,
       "release": "1987 - Nintendo Entertainment System",
       "genre": "Action",
-      "mode": "Single-player, Multi-player",
+      "mode": "Single-player, Multi-player"
     },
     {
       "id": 2,
       "name": "Batman",
-      "image": "",
+      "image": "./images/img-2.gif",
+      "price": 20,
       "release": "1989 - Nintendo Entertainment System",
       "genre": "Action",
       "mode": "Single-player"
@@ -19,7 +21,8 @@
     {
       "id": 3,
       "name": "Ninja Gaiden",
-      "image": "",
+      "image": "./images/img-3.jpg",
+      "price": 15,
       "release": "1988 - Nintendo Entertainment System",
       "genre": "Action",
       "mode": "Single-player"
@@ -27,7 +30,8 @@
     {
       "id": 4,
       "name": "Banjo-Kazooie",
-      "image": "",
+      "image": "./images/img-4.png",
+      "price": 25,
       "release": "1998 - Nintendo 64",
       "genre": "Adventure",
       "mode": "Single-player"
@@ -35,7 +39,8 @@
     {
       "id": 5,
       "name": "Donkey Kong 64",
-      "image": "",
+      "image": "./images/img-5.jpg",
+      "price": 25,
       "release": "1999 - Nintendo 64",
       "genre": "Adventure",
       "mode": "Single-player, Multi-player"
@@ -43,7 +48,8 @@
     {
       "id": 6,
       "name": "Frogger the Great Quest",
-      "image": "",
+      "image": "./images/img-6.png",
+      "price": 25,
       "release": "2001 - PlayStation 2",
       "genre": "Adventure",
       "mode": "Single-player"
@@ -51,7 +57,8 @@
     {
       "id": 7,
       "name": "Crash Bandicoot: The Wrath of Cortex",
-      "image": "",
+      "image": "./images/img-7.jpg",
+      "price": 15,
       "release": "2001 - PlayStation 2",
       "genre": "Adventure",
       "mode": "Single-player"
