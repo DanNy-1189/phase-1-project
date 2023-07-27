@@ -1,7 +1,3 @@
-#cart-bar {
-
-}
-
 #game-banner {
     width: 100%;
     height: 350px;
@@ -20,7 +16,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 270px;
+    height: 350px;
+    margin-top: 10px;
 }
 
 .game-container {
@@ -28,7 +25,7 @@
     display: flex;
     flex-wrap: wrap;
     writing-mode: horizontal-tb;
-    padding-top: 3%;
+    padding-top: 1%;
     justify-content: space-between;
 }
 
@@ -46,7 +43,6 @@
     height: 33px;
     text-align: center;
     font-weight: bold;
-    line-break: normal;
 }
 
 .game img {
@@ -69,4 +65,29 @@
 .game p:first-of-type {
     font-weight: bold;
     font-size: 18px;
+}
+
+.container {
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.search-container {
+    margin-left: 10px;
+    display: flex;
+}
+
+#search-img {
+    background-color: gray;
+    padding: 4%;
+    display: flex;
+}
+
+.cart-container {
+    margin-right: 25px;
+    display: flex;
+    scale: 2.5; 
 }
