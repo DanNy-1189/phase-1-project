@@ -20,10 +20,27 @@ function renderGames(games){
         <p>Mode: ${game.mode}</p>`
         container.append(gameDiv);
         const btn = document.createElement("button");
-        btn.id = "btn";
+        btn.id = "buybtn";
         btn.textContent = "Add to Cart";
-        btn.addEventListener("click", btn);
+        btn.addEventListener("click", (btn) => alert('Added to cart!'));
         gameDiv.append(btn);
     });
 }
+
+function searchGames() {
+    const form = document.getElementById("form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let input = document.getElementById("input").value;
+        if (input.trim() > 0){
+            input = input.trim();
+            renderList(games.filter(game => { 
+            return game.name.includes(input)
+            }));  
+        }
+    })
+}
+
+
+                
 
