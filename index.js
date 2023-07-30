@@ -28,18 +28,23 @@ function renderGames(games){
 }
 
 function searchGames() {
-    const form = document.getElementById("form");
-    form.addEventListener("submit", (e) => {
+     let form = document.querySelector("form");
+     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        let input = document.getElementById("input").value;
-        if (input.trim() > 0){
-            input = input.trim();
-            renderList(games.filter(game => { 
-            return game.name.includes(input)
-            }));  
-        }
-    })
-}
+        let input = document.querySelector("input").value;
+        let games = document.querySelectorAll(".game");
+        for (const game of games) {
+            if (input === game.name) {
+                renderGames(game);
+            } else {
+                console.log("No match found!");
+            }
+        }   
+     })
+};
+
+
+
 
 
                 
