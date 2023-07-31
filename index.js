@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => fetchData())
+document.addEventListener('DOMContentLoaded', () => fetchGames())
 
-function fetchData(){
+function fetchGames(){
     return fetch("http://localhost:3000/games")
     .then((resp) => resp.json())
-    .then((json) => renderGames(json));
+    .then((games) => renderGames(games));
 }
 
 function renderGames(games){
@@ -16,40 +16,29 @@ function renderGames(games){
 
         const gameName = document.createElement("h2");
         gameName.textContent = game.name;
-        gameDiv.append(gameName);
 
         const img = document.createElement("img");
         img.src = game.image;
         img.alt = game.name;
-        gameDiv.append(img);
        
         const price = document.createElement("p");
         price.textContent = `Price: $${game.price}`;
-        gameDiv.append(price);
 
         const release = document.createElement("p");
         release.textContent = `Release: ${game.release}`;
-        gameDiv.append(release);
 
         const genre = document.createElement("p");
         genre.textContent = `Genre: ${game.genre}`;
-        gameDiv.append(genre);
 
         const mode = document.createElement("p");
-        mode.textContent = `Mode: ${game.mode}`;
-        gameDiv.append(mode);
+        mode.textContent = `Mode: ${game.mode}`
 
         const btn = document.createElement("button");
         btn.id = "buybtn";
         btn.textContent = "Add to Cart";
-        btn.addEventListener("click", btn);
-        gameDiv.append(btn);
+        btn.addEventListener("click", addToCart(game.id));
+        
+        gameDiv.append(gameName, img, price, release, genre, mode, btn);
     });
 }
-
-
-
-
-
-
 
