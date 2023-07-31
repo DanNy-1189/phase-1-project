@@ -1,10 +1,47 @@
+/*  Navigation Bar */
+.navbar {
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 55px;
+}
+
+.search-container {
+    margin-left: 10px;
+    display: flex;
+}
+
+#search-form {
+    padding: 4%;
+    display: flex;
+    flex-direction: row;
+}
+
+.cart {
+    position: relative;
+    margin-right: 3%;
+    display: flex;
+    scale: 2; 
+}
+
+.cart span {
+    position: absolute;
+    background: white;
+    border-radius: 45%;
+    font-size: 10%;
+    color: black;
+    margin-left: 15px; 
+    top: -13%;
+    padding: 1px 2px;
+}
+
 #game-banner {
     height: 350px;
     background-image: url("images/img-header.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
     opacity: 0.8;
-    position: relative;
 }
 
 #game-banner h1 {
@@ -20,12 +57,10 @@
 }
 
 #game-container {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    writing-mode: horizontal-tb;
+    display: grid;
+    grid-template-columns: repeat(4, 350px);
     padding-top: 1%;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .game { 
@@ -67,37 +102,6 @@
     font-size: 18px;
 }
 
-.container {
-    background-color: red;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 55px;
-}
 
-.search-container {
-    margin-left: 10px;
-    display: flex;
-}
 
-#search-form {
-    padding: 4%;
-    display: flex;
-    flex-direction: row;
-}
 
-.cart-container {
-    margin-right: 3%;
-    display: flex;
-    scale: 2.5; 
-}
-
-.cart-container span{
-    background: white;
-    border-radius: 50%;
-    font-size: 70%;
-    color: black;
-    position: absolute;
-    margin-left: 15px; 
-    top: -13%;
-}
