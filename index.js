@@ -12,7 +12,7 @@ function renderGames(games){
         const gameDiv = document.createElement("div");
         container.append(gameDiv);
         gameDiv.className = "game";
-        gameDiv.id = game.id;
+        gameDiv.id = game.id;   
 
         const gameName = document.createElement("h2");
         gameName.textContent = game.name;
@@ -41,4 +41,18 @@ function renderGames(games){
         gameDiv.append(gameName, img, price, release, genre, mode, btn);
     });
 }
+
+let cart = [];
+function addToCart(gameId){
+    const cartTotal = document.querySelector(".cartTotal");
+    return () => { 
+        cart.push({id: gameId, amount: 1});
+        cartTotal.textContent = cart.length;
+        console.log(cart);
+    }
+}
+
+
+
+
 
