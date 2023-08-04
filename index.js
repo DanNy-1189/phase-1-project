@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => fetchGames())
 function fetchGames(){
     return fetch("http://localhost:3000/games")
     .then((resp) => resp.json())
-    .then((games) => renderGames(games));
+    .then((data) => renderGames(data));
 }
 
 function renderGames(games){
@@ -37,6 +37,8 @@ function renderGames(games){
         btn.id = "buybtn";
         btn.textContent = "Add to Cart";
         btn.addEventListener("click", addToCart(game.id));
+
+        searchGame(game.id);
         
         gameDiv.append(gameName, img, price, release, genre, mode, btn);
     });
@@ -52,7 +54,20 @@ function addToCart(gameId){
     }
 }
 
-
-
-
+function searchGame(gameName) {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const input = document.querySelector("input").value.toLowerCase();
+        const games = document.querySelectorAll(".game");
+        games.forEach((game) => {
+            const gameName = game.querySelector("h2").textContent.toLowerCase();
+            if (gameName.includes(input)) {
+                game.style.display = "";
+            } else {
+                game.style.display = "none";
+            }
+        })
+    });
+};
 
