@@ -38,13 +38,13 @@ function renderGames(games){
         btn.textContent = "Add to Cart";
         btn.addEventListener("click", addToCart(game.id));
 
-        searchGame(game.id);
+        searchGame();
         
         gameDiv.append(gameName, img, price, release, genre, mode, btn);
     });
 }
 
-let cart = [];
+let cart = [] ;
 function addToCart(gameId){
     const cartTotal = document.querySelector(".cartTotal");
     return () => { 
@@ -54,7 +54,7 @@ function addToCart(gameId){
     }
 }
 
-function searchGame(gameName) {
+function searchGame() {
     const form = document.querySelector("form");
     form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -66,6 +66,11 @@ function searchGame(gameName) {
                 game.style.display = "";
             } else {
                 game.style.display = "none";
+                function displayText(){
+                    const div = document.getElementById("alert-message");
+                    div.textContent = "Sorry, no games found!";
+                }                
+                displayText()
             }
         })
     });
