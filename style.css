@@ -18,11 +18,16 @@
     flex-direction: row;
 }
 
+label {
+    cursor: pointer;
+}
+
 .cart {
     position: relative;
     margin-right: 3%;
     display: flex;
     scale: 2; 
+    cursor: pointer;
 }
 
 .cart div {
