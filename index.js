@@ -20,7 +20,7 @@ function renderGames(games){
         const img = document.createElement("img");
         img.src = game.image;
         img.alt = game.name;
-       
+        
         const price = document.createElement("p");
         price.textContent = `Price: $${game.price}`;
 
@@ -37,16 +37,18 @@ function renderGames(games){
         btn.id = "buybtn";
         btn.textContent = "Add to Cart";
         btn.addEventListener("click", addToCart(game.id));
-
-        searchGame();
         
         gameDiv.append(gameName, img, price, release, genre, mode, btn);
+
+        searchGame();
+
+        cartToggler()
     });
 }
 
 let cart = [] ;
 function addToCart(gameId){
-    const cartTotal = document.querySelector(".cartTotal");
+    const cartTotal = document.querySelector("#cartTotal");
     return () => { 
         cart.push({id: gameId, amount: 1});
         cartTotal.textContent = cart.length;
@@ -66,13 +68,20 @@ function searchGame() {
                 game.style.display = "";
             } else {
                 game.style.display = "none";
-                function displayText(){
+                function alertMessage(){
                     const div = document.getElementById("alert-message");
                     div.textContent = "Sorry, no games found!";
                 }                
-                displayText()
+                alertMessage()
             }
         })
     });
 };
 
+function cartToggler() {
+    const cartButton = document.getElementById("cart-button");
+    const toggleCart = document.getElementById("toggleCart");
+    cartButton.addEventListener("click", () => {
+        toggleCart.classList.toggle("hidden");
+    })
+}
