@@ -160,3 +160,10 @@ label {
 .hidden {
     display: none;
 }
+
+#cart-message {
+    display: flex;
+    justify-content: center;
+    font-family: fantasy;
+    font-size: 20px;
+}
