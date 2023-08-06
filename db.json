@@ -63,5 +63,55 @@
       "genre": "Adventure",
       "mode": "Single-player"
     }
+  ],
+
+  "cartItems": [
+    {
+      "id": 1,
+      "name": "Contra",
+      "image": "./images/img-1.gif",
+      "price": 20
+    },
+    {
+      "id": 2,
+      "name": "Batman",
+      "image": "./images/img-2.gif",
+      "price": 20
+
+    },
+    {
+      "id": 3,
+      "name": "Ninja Gaiden",
+      "image": "./images/img-3.jpg",
+      "price": 15
+    },
+    {
+      "id": 4,
+      "name": "Banjo-Kazooie",
+      "image": "./images/img-4.png",
+      "price": 25
+    },
+    {
+      "id": 5,
+      "name": "Donkey Kong 64",
+      "image": "./images/img-5.jpg",
+      "price": 25
+    },
+    {
+      "id": 6,
+      "name": "Frogger: The Great Quest",
+      "image": "./images/img-6.png",
+      "price": 25
+    },
+    {
+      "id": 7,
+      "name": "Crash Bandicoot: The Wrath of Cortex",
+      "image": "./images/img-7.jpg",
+      "price": 15
+    }
   ]
 }
+
+  
+
+
