@@ -54,7 +54,7 @@ label {
     background-image: url("images/img-header.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
-    opacity: 0.8;
+
 }
 
 #game-banner h1 {
@@ -138,4 +138,25 @@ label {
     font-family: fantasy;
     font-size: 80px;
     margin-top: 50px;
+}
+
+/** Topple Cart **/
+#toggleCart {
+    border: gray solid 1px;
+    float: right;
+    background-color: white;
+    width: 30%;
+    padding: 10px;
+    height: 100px;
+}
+
+#toggleCart h2{
+    background-color: plum;
+    display: flex;
+    justify-content: center;
+    margin-top: -1px;
+}
+
+.hidden {
+    display: none;
 }
