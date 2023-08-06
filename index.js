@@ -42,19 +42,28 @@ function renderGames(games){
 
         searchGame();
 
-        cartToggler()
+        cartToggler();
     });
 }
 
-let cart = [] ;
+let cart = JSON.parse(localStorage.getItem('games')) || [];
 function addToCart(gameId){
     const cartTotal = document.querySelector("#cartTotal");
     return () => { 
-        cart.push({id: gameId, amount: 1});
+        cart.push({id: gameId, count: 1});
         cartTotal.textContent = cart.length;
+        localStorage.setItem('games', JSON.stringify(cart));
         console.log(cart);
     }
 }
+
+function calculateCartTotal () {
+    const cartTotal = document.querySelector("#cartTotal");
+    cartTotal.innerHTML = JSON.stringify(
+        cart.reduce((total, game) => total + game.count, 0)
+    )
+}
+calculateCartTotal()
 
 function searchGame() {
     const form = document.querySelector("form");
@@ -85,3 +94,5 @@ function cartToggler() {
         toggleCart.classList.toggle("hidden");
     })
 }
+
+
