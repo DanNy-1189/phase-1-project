@@ -72,25 +72,10 @@ label {
 
 /** Game Card Container **/
 #game-container {
-    display: grid;
-    grid-template-columns: repeat(4, 350px);
+    display: flex;
+    flex-wrap: wrap;
     padding-top: 1%;
     justify-content: center;
-}
-@media (max-width: 1189px){
-    #game-container {
-        grid-template-columns: repeat(3, 350px);
-    }
-}
-@media (max-width: 1000px){
-    #game-container {
-        grid-template-columns: repeat(2, 350px);
-    }
-}
-@media (max-width: 645px){
-    #game-container {
-        grid-template-columns: repeat(1, 350px);
-    }
 }
 
 .game { 
@@ -145,9 +130,9 @@ label {
     border: gray solid 1px;
     float: right;
     background-color: white;
-    width: 30%;
+    width: 20%;
     padding: 10px;
-    height: 100px;
+    position: relative;
 }
 
 #toggleCart h2{
@@ -166,4 +151,16 @@ label {
     justify-content: center;
     font-family: fantasy;
     font-size: 20px;
+}
+
+.cart-item {
+    border: gray solid;
+    padding: 10px;
+    justify-content: center;
+}
+
+.cart-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
 }
