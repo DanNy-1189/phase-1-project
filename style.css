@@ -29,7 +29,7 @@ label {
     margin-top: 9px;
 }
 
-.cart div {
+.cart #cart-quantity {
     position: absolute;
     background: white;
     border-radius: 45%;
@@ -130,7 +130,7 @@ label {
     border: gray solid 1px;
     float: right;
     background-color: white;
-    width: 20%;
+    width: 25%;
     padding: 10px;
     position: relative;
 }
@@ -154,13 +154,32 @@ label {
 }
 
 .cart-item {
+    display: grid;
+    grid-template-columns: 1fr .5fr .5fr 1fr .5fr ;
     border: gray solid;
-    padding: 10px;
-    justify-content: center;
+    padding: 11px;
+    height: 119px;
+    margin: 5px;
+}
+
+.cart-item h3 {
+    font-size: 15px;
+    margin-top: -6px;
+    margin-bottom: 30px;
 }
 
 .cart-item img {
     width: 100%;
-    height: 100px;
+    height: 80px;
     object-fit: contain;
+    margin-top: -6px;
+    
+}
+
+.cart-item span{
+    font-size: 14px;
+}
+
+.cart-item button {
+    float: right;
 }
