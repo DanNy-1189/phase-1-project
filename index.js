@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => fetchGames())
+document.addEventListener('DOMContentLoaded', () => fetchGames(), fetchCart())
 
 function fetchGames(){
-    return fetch("http://localhost:3000/games")
+    fetch("http://localhost:3000/games")
     .then((resp) => resp.json())
-    .then((data) => renderGames(data));
+    .then((games) => renderGames(games));
 }
 
 function renderGames(games){
@@ -22,6 +22,7 @@ function renderGames(games){
         img.alt = game.name;
         
         const price = document.createElement("p");
+        price.id = "price";
         price.textContent = `Price: $${game.price}`;
 
         const release = document.createElement("p");
@@ -34,36 +35,76 @@ function renderGames(games){
         mode.textContent = `Mode: ${game.mode}`
 
         const btn = document.createElement("button");
-        btn.id = "buybtn";
+        btn.className = "buybtn";
         btn.textContent = "Add to Cart";
-        btn.addEventListener("click", addToCart(game.id));
-        
+        btn.addEventListener("click", () => {
+            fetch("http://localhost:3000/cartItems", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    cartId: game.id,
+                    price: game.price,
+                    name: game.name,
+                    image: game.image,
+                    quantity: 1
+                })
+            })
+            .then((resp) => resp.json())
+            .then((newCartItems) => {
+                cartItemsArray.push(newCartItems);
+                renderAllCartItems(cartItemsArray);
+            });
+        }); 
         gameDiv.append(gameName, img, price, release, genre, mode, btn);
-
-        searchGame();
-
-        cartToggler();
     });
 }
 
-let cart = JSON.parse(localStorage.getItem('games')) || [];
-function addToCart(gameId){
-    const cartTotal = document.querySelector("#cartTotal");
-    return () => { 
-        cart.push({id: gameId, count: 1});
-        cartTotal.textContent = cart.length;
-        localStorage.setItem('games', JSON.stringify(cart));
-        console.log(cart);
-    }
+const cartQuantity = document.querySelector("#cart-quantity");
+const toggleCart = document.getElementById("toggleCart");
+const cartTotalValue = document.getElementById('cart-total-value');
+
+function fetchCart () {
+    fetch("http://localhost:3000/cartItems")
+    .then(resp => resp.json())
+    .then(cartItems => renderAllCartItems(cartItems));
 }
 
-function calculateCartTotal () {
-    const cartTotal = document.querySelector("#cartTotal");
-    cartTotal.innerHTML = JSON.stringify(
-        cart.reduce((total, game) => total + game.count, 0)
-    )
+function renderAllCartItems(cartItems) {
+  cartItems.forEach((cartItem) => {
+    const cItem = document.createElement('cart-item');
+    toggleCart.append(cItem);
+    cItem.id = cartItem.id;
+    cItem.className = "cart-item";
+
+    const name = document.createElement("h3");
+    name.textContent = cartItem.name;
+
+    const img = document.createElement("img");
+    img.src = cartItem.image;
+
+    const price = document.createElement("span");
+    price.textContent = `Price: $${cartItem.price}`;
+
+    const quantity = document.createElement("span");
+    quantity.textContent = `Quantity: ${cartItem.quantity}`;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.addEventListener("click", () => {
+        fetch(`http://localhost:3000/cartItems/${cartItem.id}`, {
+            method: "DELETE",
+        })
+        .then(resp => resp.json())
+        .then(cartItems => {
+            renderAllCartItems(cartItems);
+        })
+    })
+    cItem.append(name, img, price, quantity, removeBtn);
+  });
 }
-calculateCartTotal()
 
 function searchGame() {
     const form = document.querySelector("form");
@@ -86,13 +127,14 @@ function searchGame() {
         })
     });
 };
+searchGame();
 
 function cartToggler() {
     const cartButton = document.getElementById("cart-button");
-    const toggleCart = document.getElementById("toggleCart");
     cartButton.addEventListener("click", () => {
         toggleCart.classList.toggle("hidden");
     })
 }
+cartToggler()
 
 
