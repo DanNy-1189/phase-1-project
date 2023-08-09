@@ -125,7 +125,7 @@ label {
     margin-top: 50px;
 }
 
-/** Topple Cart **/
+/** Toggle Cart **/
 #toggleCart {
     border: gray solid 1px;
     float: right;
@@ -146,7 +146,7 @@ label {
     display: none;
 }
 
-#cart-message {
+#cart-empty {
     display: flex;
     justify-content: center;
     font-family: fantasy;
@@ -158,7 +158,7 @@ label {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     border: gray solid;
     padding: 11px;
-    height: 119px;
+    height: 125px;
     margin: 5px;
     overflow: auto;
 }
@@ -173,7 +173,7 @@ label {
     width: 100%;
     height: 100px;
     object-fit: contain;
-    margin-top: 10px;
+    margin-top: 11px;
 }
 
 .cart-item span{
@@ -189,3 +189,14 @@ label {
     margin-bottom: 40px;
 }
 
+#cart-total {
+    display: grid;
+    justify-content: center;
+    font-size: 23px;
+}
+
+#checkout {
+    margin-top: 6px;
+    font-size: 16px;
+    padding: 6px;
+}
