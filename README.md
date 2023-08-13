@@ -6,6 +6,7 @@ Growing up, my siblings and I absolutely loved playing with our NES (Nintendo En
 ## Description
 For my first project, I wanted to make it as close to a e-commerce app as I was possibly able to with my beginner knowledge of javascript along with extensive research. My product allows the user to use the search bar to narrow down their game search so they don't have to scroll amongst the complete list of games to find what they want. They can click on the 'magnify glass' button or press the 'enter' key. If the desired game isn't in the list, no games will show. The typed letters can be cleared with 'x' that shows in the search bar, and then press 'enter' or click the icon to return all the games. 
 
+
 Another feature of the product is adding games to the cart. Users can click the "Add To Cart" button within a game card to add that specific game to the cart. 
 
 ## Resources:
