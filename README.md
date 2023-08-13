@@ -1,6 +1,7 @@
 # Classic Video Games
 
-## 
+##Introduction
+Growing up, my siblings and I absolutely loved playing with our NES (Nintendo Entertainment System), Nintendo 64, Playstation, and more. I still love them and in fact, I either still own my old games and consoles or repurchased the ones our mother gave away. Replaying them with our mother recently is how I came up with the concept for this project. The games included in the project are some of my absolute favorites.
 
 ## Resources:
 https://en.wikipedia.org/wiki/Ninja_Gaiden_(NES_video_game)
