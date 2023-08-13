@@ -48,7 +48,7 @@ label {
     cursor: pointer;
 }
 
-/** Banner **/
+/* Banner */
 #game-banner {
     height: 350px;
     background-image: url("images/img-header.jpg");
@@ -70,7 +70,7 @@ label {
     margin-top: 10px;
 }
 
-/** Game Card Container **/
+/* Game Card Container */
 #game-container {
     display: flex;
     flex-wrap: wrap;
@@ -125,7 +125,7 @@ label {
     margin-top: 50px;
 }
 
-/** Toggle Cart **/
+/* Toggle Cart */
 #toggleCart {
     border: gray solid 1px;
     float: right;
@@ -204,5 +204,6 @@ label {
     margin-top: 6px;
     font-size: 16px;
     padding: 6px;
+    cursor: pointer;
 }
 
