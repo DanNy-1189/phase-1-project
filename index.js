@@ -1,9 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => fetchGames(), fetchCart())
+document.addEventListener('DOMContentLoaded', () => fetchGames())
+
 
 function fetchGames(){
     fetch("http://localhost:3000/games")
     .then((resp) => resp.json())
-    .then((games) => renderGames(games));
+    .then((games) => {
+        renderGames(games);
+        Storage.saveGames(games);
+    });
+}
+
+//Global variables
+let cart = [];
+const cartQuantity = document.querySelector("#cart-quantity");
+const toggleCart = document.getElementById("toggleCart");
+const cartTotalValue = document.getElementById('cart-total-value');
+
+class Storage {
+    static saveGames(games){
+        localStorage.setItem("games", JSON.stringify(games));
+    };
+    static getGames(gameId) {
+        const games = JSON.parse(localStorage.getItem("games"));
+        return games.find((game) => game.id === gameId);
+    };
+    static saveCartItems(cart){
+        localStorage.setItem("cart", JSON.stringify(cart));
+    };
+    static getCartItems(){
+        return JSON.parse(localStorage.getItem("cart")) || [];
+    };
 }
 
 function renderGames(games){
@@ -32,79 +58,84 @@ function renderGames(games){
         genre.textContent = `Genre: ${game.genre}`;
 
         const mode = document.createElement("p");
-        mode.textContent = `Mode: ${game.mode}`
+        mode.textContent = `Mode: ${game.mode}`;
 
         const btn = document.createElement("button");
         btn.className = "buybtn";
         btn.textContent = "Add to Cart";
         btn.addEventListener("click", () => {
-            fetch("http://localhost:3000/cartItems", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify({
-                    cartId: game.id,
-                    price: game.price,
-                    name: game.name,
-                    image: game.image,
-                    quantity: 1
-                })
-            })
-            .then((resp) => resp.json())
-            .then((newCartItems) => {
-                cartItemsArray.push(newCartItems);
-                renderAllCartItems(cartItemsArray);
-            });
-        }); 
+             addGameToCart(game.id)});
+
         gameDiv.append(gameName, img, price, release, genre, mode, btn);
     });
+};
+
+//Add Game To Cart
+function addGameToCart(gameId){
+    let cartItem = {...Storage.getGames(gameId), quantity: 1};
+    cart = [...cart, cartItem];
+    Storage.saveCartItems(cart);
+    calculateCartTotalQuantity(cart);
+    cartTotalSum(cart);
+    renderCartItem(cartItem);
+};
+
+//Render the Cart Items
+const cItems = document.querySelector('#cart-items-container');
+
+function renderCartItems(cart) {
+    cItems.textContent = "";
+    cart.forEach((cartItem) => {
+        renderCartItem(cartItem);
+    });
+};
+
+function renderCartItem(cartItem) {
+        Storage.getCartItems(cart);
+        const cItem = document.createElement("div");
+        cItem.className = "cart-item";
+        cItem.id = cartItem.id;
+        cItems.append(cItem);
+        
+        const img = document.createElement("img");
+        img.src = cartItem.image;
+        
+        const price = document.createElement("span");
+        price.textContent = `Price: $${cartItem.price}`;
+        
+        const quantity = document.createElement("span");
+        quantity.className = "cart-item-quantity";
+        quantity.textContent = `Quantity: ${cartItem.quantity}`;
+        
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.addEventListener("click", () => {
+            removeCartItem(cartItem.id);
+        });
+        cItem.append(img, price, quantity, removeBtn);
+};
+
+//Remove Game From Cart
+function removeCartItem(cartItemId) {
+    const cartItem = cart.find((cartItem) => cartItem.id === cartItemId);
+    cart.splice(cartItem, 1);
+    Storage.saveCartItems(cart);
+    calculateCartTotalQuantity(cart);
+    cartTotalSum(cart);
+    renderCartItems(cart);
 }
 
-const cartQuantity = document.querySelector("#cart-quantity");
-const toggleCart = document.getElementById("toggleCart");
-const cartTotalValue = document.getElementById('cart-total-value');
+// //Cart Items Quantity
+function calculateCartTotalQuantity(cart){
+    cartQuantity.textContent =
+        cart.reduce((accumulator, cartItem) => accumulator + cartItem.quantity, 0);
+};
 
-function fetchCart () {
-    fetch("http://localhost:3000/cartItems")
-    .then(resp => resp.json())
-    .then(cartItems => renderAllCartItems(cartItems));
-}
-
-function renderAllCartItems(cartItems) {
-  cartItems.forEach((cartItem) => {
-    const cItem = document.createElement('cart-item');
-    toggleCart.append(cItem);
-    cItem.id = cartItem.id;
-    cItem.className = "cart-item";
-
-    const name = document.createElement("h3");
-    name.textContent = cartItem.name;
-
-    const img = document.createElement("img");
-    img.src = cartItem.image;
-
-    const price = document.createElement("span");
-    price.textContent = `Price: $${cartItem.price}`;
-
-    const quantity = document.createElement("span");
-    quantity.textContent = `Quantity: ${cartItem.quantity}`;
-
-    const removeBtn = document.createElement("button");
-    removeBtn.textContent = "Remove";
-    removeBtn.addEventListener("click", () => {
-        fetch(`http://localhost:3000/cartItems/${cartItem.id}`, {
-            method: "DELETE",
-        })
-        .then(resp => resp.json())
-        .then(cartItems => {
-            renderAllCartItems(cartItems);
-        })
-    })
-    cItem.append(name, img, price, quantity, removeBtn);
-  });
-}
+//Total Value Of Cart Items
+function cartTotalSum(cart){  
+    cartTotalValue.textContent =
+    `Total: $${cart.reduce((accumulator, cartItem) => accumulator + cartItem.price * cartItem.quantity, 0)}`;
+};
 
 function searchGame() {
     const form = document.querySelector("form");
@@ -118,23 +149,35 @@ function searchGame() {
                 game.style.display = "";
             } else {
                 game.style.display = "none";
-                function alertMessage(){
-                    const div = document.getElementById("alert-message");
-                    div.textContent = "Sorry, no games found!";
-                }                
-                alertMessage()
-            }
-        })
+            };   
+        });
     });
 };
 searchGame();
 
+//Toggle Cart
 function cartToggler() {
     const cartButton = document.getElementById("cart-button");
     cartButton.addEventListener("click", () => {
         toggleCart.classList.toggle("hidden");
-    })
-}
-cartToggler()
+    });
+};
+cartToggler();
 
-
+//Checkout Cart
+function checkoutCart() {
+    const checkout = document.getElementById("checkout");
+    checkout.addEventListener("click", () => {
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+        } else {
+            cart.length = 0;
+            cItems.textContent = "";
+            cartTotalValue.textContent = `Total: $0`;
+            cartQuantity.textContent = 0;
+            alert("Thank you for shopping with us!");
+            Storage.saveCartItems(cart);
+        };
+    });
+};
+checkoutCart();
