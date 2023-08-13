@@ -127,4 +127,14 @@ function removeCartItem(cartItemId) {
     renderCartItems(cart);
 };
 
+//Cart Items Quantity
+function calculateCartTotalQuantity(cart){
+    cartQuantity.textContent =
+        cart.reduce((accumulator, cartItem) => accumulator + cartItem.quantity, 0);
+};
 
+//Total Value Of Cart Items
+function cartTotalSum(cart){  
+    cartTotalValue.textContent =
+    `Total: $${cart.reduce((accumulator, cartItem) => accumulator + cartItem.price * cartItem.quantity, 0)}`;
+};
