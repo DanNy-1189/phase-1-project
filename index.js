@@ -34,7 +34,6 @@ class Storage {
     };
 };
 
-
 //Render the Games
 function renderGames(games){
     games.forEach((game) => {
