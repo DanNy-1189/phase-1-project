@@ -34,6 +34,8 @@ class Storage {
     };
 };
 
+
+//Render the Games
 function renderGames(games){
     games.forEach((game) => {
         const container = document.querySelector("#game-container");
@@ -80,6 +82,49 @@ function addGameToCart(gameId){
     calculateCartTotalQuantity(cart);
     cartTotalSum(cart);
     renderCartItem(cartItem);
+};
+
+//Render the Cart Items
+function renderCartItems(cart) {
+    cItems.textContent = "";
+    cart.forEach((cartItem) => {
+        renderCartItem(cartItem);
+    });
+};
+
+function renderCartItem(cartItem) {
+        Storage.getCartItems(cart);
+        const cItem = document.createElement("div");
+        cItem.className = "cart-item";
+        cItem.id = cartItem.id;
+        cItems.append(cItem);
+        
+        const img = document.createElement("img");
+        img.src = cartItem.image;
+        
+        const price = document.createElement("span");
+        price.textContent = `Price: $${cartItem.price}`;
+        
+        const quantity = document.createElement("span");
+        quantity.className = "cart-item-quantity";
+        quantity.textContent = `Quantity: ${cartItem.quantity}`;
+        
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.addEventListener("click", () => {
+            removeCartItem(cartItem.id);
+        });
+        cItem.append(img, price, quantity, removeBtn);
+};
+
+//Remove Game From Cart
+function removeCartItem(cartItemId) {
+    const cartItem = cart.find((cartItem) => cartItem.id === cartItemId);
+    cart.splice(cartItem, 1);
+    Storage.saveCartItems(cart);
+    calculateCartTotalQuantity(cart);
+    cartTotalSum(cart);
+    renderCartItems(cart);
 };
 
 
