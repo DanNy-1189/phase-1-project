@@ -138,3 +138,48 @@ function cartTotalSum(cart){
     cartTotalValue.textContent =
     `Total: $${cart.reduce((accumulator, cartItem) => accumulator + cartItem.price * cartItem.quantity, 0)}`;
 };
+
+function searchGame() {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const input = document.querySelector("input").value.toLowerCase();
+        const games = document.querySelectorAll(".game");
+        games.forEach((game) => {
+            const gameName = game.querySelector("h2").textContent.toLowerCase();
+            if (gameName.includes(input)) {
+                game.style.display = "";
+            } else {
+                game.style.display = "none";
+            };   
+        });
+    });
+};
+searchGame();
+
+//Toggle Cart
+function cartToggler() {
+    const cartButton = document.getElementById("cart-button");
+    cartButton.addEventListener("click", () => {
+        toggleCart.classList.toggle("hidden");
+    });
+};
+cartToggler();
+
+//Checkout Cart
+function checkoutCart() {
+    const checkout = document.getElementById("checkout");
+    checkout.addEventListener("click", () => {
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+        } else {
+            cart.length = 0;
+            cItems.textContent = "";
+            cartTotalValue.textContent = `Total: $0`;
+            cartQuantity.textContent = 0;
+            alert("Thank you for shopping with us!");
+            Storage.saveCartItems(cart);
+        };
+    });
+};
+checkoutCart();
