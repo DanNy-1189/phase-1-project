@@ -4,7 +4,7 @@
 Growing up, my siblings and I loved playing with our NES (Nintendo Entertainment System), Nintendo 64, PlayStation, and more. I still love them, and I either own my old games and consoles or repurchase the ones our mother gave away. Replaying them with our mother recently is how I developed the concept for this project. The games included in the project are some of my absolute favorites.
 
 ## Description
-For my first project, I wanted to make it as close to an e-commerce app as possible with my beginner knowledge of javascript and extensive research. My product allows users to use the search bar to narrow their game search so they don't have to scroll amongst the complete list of games to find what they want. They can click the 'magnify glass' button or press the 'enter' key. No games will appear if the desired game isn't on the list. The typed letters can be cleared with the 'x' in the search bar, and then press 'enter' or click the icon to return all the games. 
+For my first project, I wanted to make it as close to an e-commerce app as possible with my beginner knowledge of javascript and extensive research. My product allows users to use the search bar to narrow their game search so they don't have to scroll amongst the complete list of games to find what they want. They can click the 'magnify glass' button or press the 'return' key. No games will appear if the desired game isn't on the list. The typed letters can be cleared with the 'x' in the search bar, and then press 'return' or click the icon to return all the games. 
 
 https://github.com/DanNy-1189/phase-1-project/assets/128336118/704688e8-dfe5-4e8b-9e58-ec66dc269045
 
