@@ -12,7 +12,12 @@ Another feature of the product is adding games to the cart. Users can click the 
 
 https://github.com/DanNy-1189/phase-1-project/assets/128336118/3f17c1cc-cc20-4593-8983-840ecd66397f
 
-The item is then added to the cart where the cart icon will display the number of items in the cart, and clicking on the cart will display the added games as well as the price total.
+The item is then added to the cart where the cart icon will display the number of items in the cart, and clicking on the cart will display the added games as well as the price total. 
+
+https://github.com/DanNy-1189/phase-1-project/assets/128336118/a79bd4a2-ff6e-40db-ae3d-833f720d0025
+
+
+
 
 ## Resources:
 https://en.wikipedia.org/wiki/Ninja_Gaiden_(NES_video_game)
