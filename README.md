@@ -16,7 +16,13 @@ The item is then added to the cart where the cart icon will display the number o
 
 https://github.com/DanNy-1189/phase-1-project/assets/128336118/a79bd4a2-ff6e-40db-ae3d-833f720d0025
 
+The user is also able to remove items from the cart, which in turn impacts the quantity and sum of the cart.
 
+https://github.com/DanNy-1189/phase-1-project/assets/128336118/69e8591d-13a3-4e02-9c24-0fcd80f7cc03
+
+The final feature is the checkout aspect of the project. When the user clicks on the "Checkout" button when the cart has items, an alert will pop up thanking the user for their purchase and the quantity and sum of the cart will reset to "0" and "$0" respectively. If the user clicks on the "Checkout" button when there are no items in the cart, and an alert will pop up notifying the user that the cart is empty.
+
+https://github.com/DanNy-1189/phase-1-project/assets/128336118/7155b617-3eb0-44a6-b563-8178616bfcf7
 
 
 ## Resources:
